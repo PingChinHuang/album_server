@@ -1,0 +1,22 @@
+{
+  "name": "album_server",
+  "version": "1.0.0",
+  "description": "A album server for automatically shows photos according to the folders in a specified folder in the system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "album_server_test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PingChinHuang/album_server.git"
+  },
+  "keywords": [
+    "album"
+  ],
+  "author": "Audy Huang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PingChinHuang/album_server/issues"
+  },
+  "homepage": "https://github.com/PingChinHuang/album_server#readme"
+}
