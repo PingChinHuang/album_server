@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <ul>
+    <% for (var i = 0; i < album.length; i++) { %>
+      <li>
+      <a href='/album/<%= album[i] %>'><%= album[i] %></a>
+      </li>
+    <% } %>
+  </ul>
+</body>
+</html>
