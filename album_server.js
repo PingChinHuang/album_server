@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
+const url = require('url');
 
 const app = express();
 
@@ -48,8 +49,28 @@ app.get('/', (req, resp) => {
   });
 });
 
-app.get('album/*', (req, res) => {
+app.get('/album/*', (req, res) => {
+  var list = [];
+  var jpg_list = [];
+  var album_path = path.resolve(base_album_dir, decodeURI(path.basename(req.url)));
+  list = list.concat(fs.readdirSync(album_path));
+  for (var i = 0; i < list.length; i++) {
+    if (path.extname(list[i]).toLowerCase() == '.jpg') {
+      jpg_list.push(list[i]);
+    }
+  }
+  console.log(jpg_list);
+  console.log(decodeURI(path.basename(req.url)));
 
+  res.render('album', {title: decodeURI(path.basename(req.url)),
+                        photos: jpg_list});
+});
+
+app.get('/photos/*', (req, res) => {
+  console.log(decodeURI(req.url));
+  var photo_path = path.resolve(base_album_dir,
+                                decodeURI(req.url.replace('/photos/', '')));
+  console.log(photo_path);
 });
 
 var server = http.createServer(app);
